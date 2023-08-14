@@ -5,10 +5,10 @@ namespace HW32
     {
         static async Task Main()
         {
-            string path1 = @"c:\Otus\TestDir1";
+            string path1 = @"c:\Otus\TestDir1";//указываем путь к каталогу
             string path2 = @"c:\Otus\TestDir2";
             DirectoryInfo directoryInfo1 = new DirectoryInfo(path1);
-            directoryInfo1.Create();
+            directoryInfo1.Create(); //создаем директорию
             DirectoryInfo directoryInfo2 = new DirectoryInfo(path2);
             directoryInfo2.Create();
             await CreateFileAndWrite(path1);
@@ -19,6 +19,11 @@ namespace HW32
             await WriteFileInfo(directoryInfo2);
             Console.ReadLine();
         }
+        /// <summary>
+        /// Метод создает файл в указанной директории и записывает название в него.
+        /// </summary>
+        /// <param name="directoryPath"></param>
+        /// <returns></returns>
         static async Task CreateFileAndWrite(string directoryPath)
         {
             for (int i = 0; i < 10; i++)
@@ -50,7 +55,11 @@ namespace HW32
                 }
             }
         }
-
+        /// <summary>
+        /// Метод добавляет в файлы текущую дату и время.
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         static async Task WriteFilesAddition(DirectoryInfo info)
         {
             try
@@ -93,6 +102,11 @@ namespace HW32
 
         }
 
+        /// <summary>
+        /// Метод выводит на экран список файлов с их сожержимым в указанном каталоге.
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         static async Task WriteFileInfo(DirectoryInfo info)
         {
             Console.WriteLine($"Имя файла:\t\tСодержимое файла");
@@ -128,7 +142,6 @@ namespace HW32
                     }
                     catch (IOException ex)
                     {
-                        //foreach(Exception exception in ex.InnerException)
                         Console.WriteLine($"Файл {name} уже открыт.");
                     }
                 }
