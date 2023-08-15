@@ -5,8 +5,9 @@ namespace HW32
     {
         static async Task Main()
         {
-            string path1 = @"c:\Otus\TestDir1";//указываем путь к каталогу
-            string path2 = @"c:\Otus\TestDir2";
+            string[] strs = { @"c:","Otus", "TestDir1", "TestDir2" };
+            string path1 = Path.Combine(strs[0], strs[1], strs[2]); //указываем путь к каталогу
+            string path2 = Path.Combine(strs[0], strs[1], strs[3]);
             DirectoryInfo directoryInfo1 = new DirectoryInfo(path1);
             directoryInfo1.Create(); //создаем директорию
             DirectoryInfo directoryInfo2 = new DirectoryInfo(path2);
